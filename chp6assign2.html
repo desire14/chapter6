@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--Created by D Fyall-->>
+<html = "en">  
+<head>
+    <meta charset = "utf-8">
+    <title>Chapter 6 Assignment 2</title>
+    <meta charset="UTF-8">
+    <script type = "text/javascript">
+        function monthly_payment (monthly_interest, months, loan_amount){
+            
+            var base = Math.pow(1 + monthly_interest, months);
+            var payment = loan_amount * monthly_interest / (1 - (1/base));
+            
+            return payment
+            
+        }
+
+        function getNumber(message)
+        {
+            return Number(prompt(message, ""));
+        }  
+
+    </script>
+    <style>
+        body{background-color: tan}
+    </style>
+</head>    
+<body>
+    <script type="text/javascript">     
+            var vehicle_price = getNumber("Enter the vehicle price:");
+            var down_payment = getNumber("Enter the down payment amount.:");
+            var annual_interest= getNumber("Enter the annual interest rate for the loan:");
+
+            var loan_amount= vehicle_price - down_payment;
+            var monthly_interest = annual_interest / 1200;
+            
+        document.write("<h1>Loan Calculator</h1>");
+        document.write("Vehicle price: $ " + vehicle_price +  "<br>");
+        document.write("Down payment: $ " + down_payment + "<br>");
+	    document.write("Annual Interest: " + annual_interest + "%<br>");	
+	    document.write("Loan Amount: $ " + loan_amount + "<br>");
+
+        document.write("<pre># of Months\tPayment/Month\n");
+        for(var i = 2; i < 6; i++ )
+        {
+             document.write((i * 12) + "\t\t" + monthly_payment(monthly_interest, i * 12, loan_amount).toFixed(2) + "\n");
+        }
+        document.write("</pre>");
+
+    </script>
+    
+</body>
+</html>
